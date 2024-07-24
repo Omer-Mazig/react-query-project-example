@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": "2",
+      "title": "Mechanical Keyboard",
+      "description": "Compact mechanical keyboard with RGB lighting and customizable keys.",
+      "price": 75.99,
+      "category": "Accessories",
+      "isFeatured": false
+    },
+    {
+      "id": "3",
+      "title": "Gaming Headset",
+      "description": "Surround sound gaming headset with noise-canceling microphone.",
+      "price": 49.99,
+      "category": "Accessories",
+      "isFeatured": false
+    },
+    {
+      "id": "4",
+      "title": "4K Monitor",
+      "description": "27-inch 4K UHD monitor with vibrant colors and high refresh rate.",
+      "price": 299.99,
+      "category": "Monitors",
+      "isFeatured": false
+    },
+    {
+      "id": "5",
+      "title": "Portable SSD",
+      "description": "1TB portable SSD with USB 3.1 for fast data transfer and durability.",
+      "price": 129.99,
+      "category": "Storage",
+      "isFeatured": true
+    },
+    {
+      "id": "6",
+      "title": "Smartphone",
+      "description": "Latest model smartphone with 6.5-inch display and dual camera.",
+      "price": 699.99,
+      "category": "Mobile Phones",
+      "isFeatured": false
+    },
+    {
+      "id": "7",
+      "title": "Smartwatch",
+      "description": "Water-resistant smartwatch with heart rate monitor and GPS.",
+      "price": 199.99,
+      "category": "Wearables",
+      "isFeatured": false
+    },
+    {
+      "id": "8",
+      "title": "Bluetooth Speaker",
+      "description": "Portable Bluetooth speaker with 360-degree sound and long battery life.",
+      "price": 59.99,
+      "category": "Audio",
+      "isFeatured": true
+    }
+  ]
+}
