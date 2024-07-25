@@ -13,11 +13,16 @@ export interface Product {
   isFeatured: boolean;
 }
 
-export const fetchProducts = async (): Promise<Product[]> => {
+export const fetchProducts = async (
+  search: string = ""
+): Promise<Product[]> => {
   console.log("fetching products");
   await _wait();
-  const response = await api.get("/products");
-  return response.data;
+  const { data } = await api.get("/products");
+  const products: Product[] = data.filter((product: Product) =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
+  return products;
 };
 
 export const fetchProductById = async (id: string): Promise<Product> => {
@@ -39,6 +44,15 @@ export const deleteProduct = async (id: string): Promise<void> => {
   await api.delete(`/products/${id}`);
 };
 
+export const createProduct = async (
+  data: Omit<Product, "id">
+): Promise<Product> => {
+  console.log("creating product", data);
+  await _wait();
+  const response = await api.post("/products", data);
+  return response.data;
+};
+
 export const updateProduct = async (
   id: string,
   data: Partial<Product>
@@ -53,5 +67,5 @@ export const updateProduct = async (
 };
 
 async function _wait(ms: number = 2000) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

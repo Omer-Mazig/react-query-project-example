@@ -9,13 +9,25 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
-import { Star } from "lucide-react";
+import { Star, Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
+import { useDeleteProduct } from "@/hooks/use-delete-product";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const deleteProductMutation = useDeleteProduct();
+  function handleDelete(
+    ev: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string
+  ) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    deleteProductMutation.mutate(id);
+  }
+
   return (
     <Link key={product.id} to={`/products/${product.id}`}>
       <Card className="bg-slate-200 shadow-lg hover:shadow-2xl transition duration-150 h-full">
@@ -27,9 +39,19 @@ export function ProductCard({ product }: ProductCardProps) {
           <CardDescription>{product.description}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex justify-between">
-            <Badge className="hover:bg-primary/100">{product.category}</Badge>
-            <p>${product.price.toFixed(2)}</p>
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2 items-center">
+              <Badge className="hover:bg-primary/100">{product.category}</Badge>
+              <p>${product.price.toFixed(2)}</p>
+            </div>
+            <Button
+              onClick={(ev) => handleDelete(ev, product.id)}
+              variant="ghost"
+              size="sm"
+              className="group hover:bg-destructive/10"
+            >
+              <Trash2 className="h-4 w-4 group-hover:text-destructive" />
+            </Button>
           </div>
         </CardContent>
       </Card>
